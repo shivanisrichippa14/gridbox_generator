@@ -343,7 +343,13 @@ const toggleCell = (r, c) => {
   <input
     type="number"
     value={onAnimDuration}
-    onChange={(e) => setOnAnimDuration(e.target.value)}
+       min={0}
+  max={1000}
+  onChange={(e) => {
+    const val = Math.min(1000, Math.max(1, Number(e.target.value)));
+  setOnAnimDuration(val);
+  }}
+    
   />
 </div>
 
@@ -366,8 +372,13 @@ const toggleCell = (r, c) => {
   <input
     type="number"
     value={offAnimDuration}
+      min={0}
+  max={1000}
+  onChange={(e) => {
+    const val = Math.min(1000, Math.max(1, Number(e.target.value)));
+   setOffAnimDuration(val);
+  }}
     
-    onChange={(e) => setOffAnimDuration(e.target.value)}
   />
 </div>
 
