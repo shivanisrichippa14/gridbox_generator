@@ -183,7 +183,24 @@ pre {
   font-size: 12px;
   overflow: auto;
 }
+.edit-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background: #f0eeff;
+  color: #5B4DFF;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
+.edit-btn:hover {
+  background: #5B4DFF;
+  color: white;
+}
 /* Keyframes */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
