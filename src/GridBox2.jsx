@@ -299,7 +299,13 @@ const toggleCell = (r, c) => {
                   <input
                         type="number"
                        value={scale}
-                       onChange={(e) => setScale(e.target.value)}
+                    min={0}
+  max={10}
+  onChange={(e) => {
+    const val = Math.min(30, Math.max(1, Number(e.target.value)));
+   setScale(val);
+  }}
+                      
                   />
           </div>
 
@@ -308,7 +314,13 @@ const toggleCell = (r, c) => {
                     <input
                          type="number"
                           value={borderRadius}
-                          onChange={(e) => setBorderRadius(e.target.value)}
+                       min={0}
+  max={30}
+  onChange={(e) => {
+    const val = Math.min(30, Math.max(1, Number(e.target.value)));
+   setBorderRadius(val);
+  }}
+                          
                     />
             </div>
 
@@ -354,6 +366,7 @@ const toggleCell = (r, c) => {
   <input
     type="number"
     value={offAnimDuration}
+    
     onChange={(e) => setOffAnimDuration(e.target.value)}
   />
 </div>
