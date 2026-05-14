@@ -190,7 +190,7 @@ const toggleCell = (r, c) => {
               type="number"
               placeholder="Enter rows"
               value={rows}
-              min={0}
+              min={1}
   max={30}
               onChange={(e) =>
                 setRows(e.target.value)
@@ -206,7 +206,7 @@ const toggleCell = (r, c) => {
               type="number"
               placeholder="Enter cols"
               value={cols}
-              min={0}
+              min={1}
   max={30}
               onChange={(e) =>
                 setCols(e.target.value)
