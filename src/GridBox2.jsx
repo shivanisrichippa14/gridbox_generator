@@ -186,32 +186,34 @@ const toggleCell = (r, c) => {
 
             <label>Rows</label>
 
-            <input
-              type="number"
-              placeholder="Enter rows"
-              value={rows}
-              min={1}
+           <input
+  type="number"
+  placeholder="Enter rows"
+  value={rows}
+  min={1}
   max={30}
-              onChange={(e) =>
-                setRows(e.target.value)
-              }
-            />
+  onChange={(e) => {
+    const val = Math.min(30, Math.max(1, Number(e.target.value)));
+    setRows(val);
+  }}
+/>
           </div>
 
           <div className="form-group">
 
             <label>Cols</label>
 
-            <input
-              type="number"
-              placeholder="Enter cols"
-              value={cols}
-              min={1}
+          <input
+  type="number"
+  placeholder="Enter cols"
+  value={cols}
+  min={1}
   max={30}
-              onChange={(e) =>
-                setCols(e.target.value)
-              }
-            />
+  onChange={(e) => {
+    const val = Math.min(30, Math.max(1, Number(e.target.value)));
+    setCols(val);
+  }}
+/>
 
           </div>
 
@@ -225,9 +227,13 @@ const toggleCell = (r, c) => {
               type="number"
               placeholder="Enter dot size"
               value={dotSize}
-              onChange={(e) =>
-                setDotSize(e.target.value)
-              }
+              min={1}
+  max={20}
+  onChange={(e) => {
+    const val = Math.min(20, Math.max(1, Number(e.target.value)));
+    setDotSize(val);
+  }}
+             
             />
 
           </div>
@@ -240,9 +246,13 @@ const toggleCell = (r, c) => {
               type="number"
               placeholder="Enter gap"
               value={gap}
-              onChange={(e) =>
-                setGap(e.target.value)
-              }
+              min={0}
+  max={30}
+  onChange={(e) => {
+    const val = Math.min(30, Math.max(1, Number(e.target.value)));
+   setGap(val);
+  }}
+            
             />
 
           </div>
