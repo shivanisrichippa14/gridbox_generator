@@ -344,9 +344,9 @@ const toggleCell = (r, c) => {
   />
 </div>
 
-          <button type="submit">
+          {/* <button type="submit">
             Create Grid
-          </button>
+          </button> */}
 
         </form>
 
