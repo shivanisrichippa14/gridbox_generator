@@ -15,11 +15,14 @@ body {
   background: white;
   padding: 30px;
   border-right: 1px solid #e5e5e5;
-
   display: flex;
   flex-direction: column;
-}
 
+  height: 100vh;        /* add this */
+  overflow-y: auto;     /* add this */
+  position: sticky;     /* add this */
+  top: 0;               /* add this */
+}
 .sidebar h2 {
   margin-bottom: 30px;
   font-size: 34px;
