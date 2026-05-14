@@ -27,6 +27,25 @@ const [offAnimDuration, setOffAnimDuration] = useState("");
 
   const [savedShapes, setSavedShapes] = useState([]);
 
+  const [editingIndex, setEditingIndex] = useState(null);
+
+  const loadShape = (shape, index) => {
+  setRows(shape.rows);
+  setCols(shape.cols);
+  setDotSize(shape.dotSize);
+  setGap(shape.gap);
+  setColor(shape.color);
+  setOffColor(shape.offColor);
+  setScale(shape.scale);
+  setBorderRadius(shape.borderRadius);
+  setOnAnimType(shape.onAnimType);
+  setOnAnimDuration(shape.onAnimDuration);
+  setOffAnimType(shape.offAnimType);
+  setOffAnimDuration(shape.offAnimDuration);
+  setPattern(shape.pattern);
+  setEditingIndex(index);
+};
+
 
   useEffect(() => {
 
@@ -116,8 +135,16 @@ const toggleCell = (r, c) => {
       offAnimDuration,
     };
 
-    const updatedShapes = [...savedShapes, newShape];
 
+    let updatedShapes;
+
+  if (editingIndex !== null) {
+    updatedShapes = [...savedShapes];
+    updatedShapes[editingIndex]=newShape;
+  } else {
+    updatedShapes=[...savedShapes, newShape];
+  }
+    
     setSavedShapes(updatedShapes);
 
     localStorage.setItem(
@@ -139,6 +166,7 @@ const toggleCell = (r, c) => {
     setOffAnimDuration("");
     setOffAnimType("none");
     setOffAnimDuration("");
+    setEditingIndex(null);
   };
 
 
@@ -402,17 +430,12 @@ style={{
   })()
 }
 
+       
         {pattern.length > 0 && (
-
-          <button
-  type="button"
-  onClick={saveShape}
-  className="save-btn"
->
-  Save Shape
-</button>
-
-        )}
+  <button type="button" onClick={saveShape} className="save-btn">
+    {editingIndex !== null ? "Update Shape" : "Save Shape"}
+  </button>
+)}
 
         <div className="saved-section">
 
@@ -478,25 +501,18 @@ style={{
         }
 
         cards.push(
-
-          <div
-            key={index}
-            className="card"
-          >
-
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: `${shape.gap}px`,
-              }}
-            >
-              {rows}
-            </div>
-
-          </div>
-
-        );
+  <div key={index} className="card">
+    <div style={{ display: "flex", flexDirection: "column", gap: `${shape.gap}px` }}>
+      {rows}
+    </div>
+    <button
+      className="edit-btn"
+      onClick={() => loadShape(shape, index)}
+    >
+      Edit
+    </button>
+  </div>
+);
       }
 
       return (
