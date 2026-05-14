@@ -18,10 +18,10 @@ body {
   display: flex;
   flex-direction: column;
 
-  height: 100vh;        /* add this */
-  overflow-y: auto;     /* add this */
-  position: sticky;     /* add this */
-  top: 0;               /* add this */
+  height: 100vh;       
+  overflow-y: auto;     
+  position: sticky;   
+  top: 0;               
 }
 .sidebar h2 {
   margin-bottom: 30px;
